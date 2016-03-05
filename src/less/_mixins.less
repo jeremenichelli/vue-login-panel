@@ -1,0 +1,38 @@
+@import '_variables.less';
+
+@color--delta: #101010;
+
+.clearfix() {
+    *zoom: 1;
+
+    &:before,
+    &:after {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+.button(@color) {
+    background-color: @color;
+    color: @light--color;
+    border-width: 0;
+    border-radius: 4px;
+    font-weight: 700;
+    float: right;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    transition: all .15s ease;
+
+    &:hover {
+        background-color: @color + @color--delta;
+    }
+
+    &:active {
+        background-color: @color - @color--delta;
+    }
+}

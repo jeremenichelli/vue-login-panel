@@ -1,0 +1,192 @@
+// normalize user agent styles
+@import '_normalize.less';
+
+// make general variables available
+@import '_variables.less';
+
+//bring common solutions
+@import '_mixins.less';
+
+/* -- GENERAL -- */
+body {
+    background-color: @light--color;
+    color: @dark--color;
+    font-family: 'Open Sans', Helvetica Neue, sans-serif;
+    font-size: 18px;
+}
+
+
+// border box reset
+html {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+
+    &:after,
+    &:before {
+        box-sizing: inherit;
+    }
+}
+
+/* -- LAYOUT -- */
+.container {
+    max-width: 725px;
+    margin: 0 auto;
+    padding: 40px;
+    .clearfix();
+}
+
+/* -- LOGIN PANEL -- */
+.login-panel {
+    background-color: @light--color;
+    box-shadow: 0 0 7px rgba(0,0,0,.15);
+    padding: 25px 40px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .25s ease;
+    width: 342px;
+    max-width: 97.5%;
+
+    &.hidden {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, -50%) scale(.5);
+    }
+
+    h2 {
+        margin-top: 0;
+        font-weight: 400;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+.login-panel-overlay {
+    background-color: rgba(0,0,0,.15);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all .25s ease;
+
+    &.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.form-row + .form-row {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-size: .8em;
+    line-height: 2em;
+    text-transform: lowercase;
+}
+
+input {
+
+    &:focus {
+        outline: 0;
+    }
+
+    &[type="text"] {
+        border-width: 0 0 1px;
+        font-style: italic;
+        line-height: 1.5em;
+    }
+
+    &[type="submit"] {
+        .button(@main--color);
+    }
+}
+
+.loading {
+
+    input[type="submit"] {
+        opacity: .5;
+    }
+}
+
+/* -- HEADER -- */
+.logout-btn {
+    .button(@warning--color);
+}
+
+h1 {
+    color: @light--color;
+    float: left;
+    font-weight: 400;
+    line-height: 42px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+header {
+    background-color: @main--color;
+    .clearfix();
+}
+
+/* -- FEATURED -- */
+.featured {
+    background-color: @featured--color;
+}
+
+/* -- CONTENT -- */
+.card {
+    min-height: 1px;   
+    .clearfix();
+
+    p {
+        background-color: @featured--color;
+        height: 20px;
+        margin: 40px 0 0;
+        width: 100%;
+    }
+
+    + .card {
+        margin: 30px 0 0;
+    }
+}
+
+/* -- FOOTER -- */
+footer {
+    color: @medium--color;
+    font-size: .8em;
+    text-transform: uppercase;
+}
+
+/* -- ERRORS -- */
+.error {
+    color: @warning--color;
+    min-height: 14px;
+    line-height: 1em;
+    font-size: .75em;
+    visibility: hidden;
+}
+
+.invalid .error {
+    display: block;
+    visibility: visible;
+}
+
+
+/* -- DESKTOP STYLES -- */
+@media screen and (min-width: 768px) {
+
+    .card {
+        float: left;
+        width: 45%;
+
+        + .card {
+            margin: 0 0 0 10%;
+        }
+    }
+}

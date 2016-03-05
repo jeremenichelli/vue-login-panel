@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Login Panel | Jeremias Menichelli</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="container">
+                <h1>App</h1>
+                <button @click="onLogout" class="logout-btn" v-if="logged">Log Out</button>
+            </div>
+        </header>
+
+        <section class="featured">
+            <div class="container"></div>
+        </section>
+
+        <section class="content" v-if="logged">
+            <div class="container">
+                <div class="card">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="card">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </section>
+
+        <footer v-if="logged">
+            <div class="container">
+                <p>Vue Login Panel | All rights Reserved &copy; Jeremias Menichelli</p>
+            </div>
+        </footer>
+
+        <div class="login-panel-overlay" :class="{ hidden: logged}"></div>
+        <div class="login-panel" :class="{ invalid: !valid, hidden: logged , loading: loading }">
+            <h2>Login</h2>
+            <p class="error">{{ error }}</p>
+            <form action="?">
+                <div class="form-row">
+                    <label for="user">User</label>
+                    <input type="text" name="user" id="user"
+                        v-model="credentials.user">
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" id="password"
+                        v-model="credentials.password">
+                </div>
+                <div class="form-row">
+                    <input type="submit" value="Login" @click="onLogin">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
